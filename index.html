@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HALLOWE'EN NIGHT PARTY — Invitation</title>
+  <meta name="description" content="真央MEETING×輝夜MEETINGから、IKUSIAイベントの皆さまへ。ハロウィンナイトパーティーのデジタル招待状です。">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#0a0617">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0617'/%3E%3Cpath d='M44 9a23 23 0 1 0 8 42A20 20 0 1 1 44 9Z' fill='%23f4c96b'/%3E%3Cpath d='m19 20 4 7 8 1-6 6 2 8-8-4-7 4 1-8-6-6 8-1Z' fill='%23a46cff'/%3E%3C/svg%3E">
+  <style>
+    :root{--night:#080512;--violet:#1a1034;--ink:#110a20;--gold:#f1c66c;--gold2:#fff0b2;--lav:#d9c4ef;--pink:#e6a4c9;--paper:#f6eedf;--muted:#b7abc7}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--night);color:#f8f1ff;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;line-height:1.8;overflow-x:hidden}
+    button{font:inherit}
+    .backdrop{position:fixed;inset:0;background:linear-gradient(rgba(8,5,18,.42),rgba(8,5,18,.9)),url("assets/moonlit-background.webp") center/cover no-repeat;z-index:-2}
+    .backdrop::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 18%,transparent 0 23%,rgba(5,3,13,.28) 55%,rgba(5,3,13,.82) 100%)}
+    .stars{position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(circle,#fff8d6 0 1px,transparent 1.5px);background-size:54px 54px;opacity:.18}
+
+    .opening{min-height:100svh;display:grid;place-items:center;padding:28px 18px;transition:opacity .8s ease,visibility .8s ease}
+    .opening.is-open{opacity:0;visibility:hidden;position:absolute;inset:0}
+    .envelope-wrap{text-align:center;max-width:720px;width:100%}
+    .eyebrow{font-family:Georgia,serif;letter-spacing:.32em;color:var(--gold);font-size:.8rem;text-transform:uppercase;margin:0 0 22px}
+    .envelope{position:relative;width:min(560px,92vw);aspect-ratio:1.55;margin:auto;background:linear-gradient(145deg,#201031,#0d0819);border:1px solid rgba(241,198,108,.75);box-shadow:0 35px 90px #000,0 0 50px rgba(150,88,237,.17);overflow:hidden}
+    .envelope::before,.envelope::after{content:"";position:absolute;inset:auto 0 0;height:76%;border-top:1px solid rgba(241,198,108,.38)}
+    .envelope::before{clip-path:polygon(0 0,50% 76%,100% 0,100% 100%,0 100%);background:linear-gradient(145deg,#170c27,#090611)}
+    .envelope::after{inset:0 0 auto;height:64%;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(#2c1740,#12091f);transform-origin:top;transition:transform .8s cubic-bezier(.2,.8,.2,1);z-index:2}
+    .seal{position:absolute;z-index:4;left:50%;top:51%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid #ffd984;background:radial-gradient(circle at 35% 30%,#a9547d,#5c1c50 55%,#2b0c2c);color:var(--gold2);display:grid;place-items:center;font-size:2.25rem;box-shadow:0 8px 24px #000,0 0 0 8px rgba(241,198,108,.08);transition:transform .55s ease,opacity .35s ease}
+    .envelope-wrap.opening-now .envelope::after{transform:rotateX(178deg)}
+    .envelope-wrap.opening-now .seal{transform:translate(-50%,-50%) scale(.4) rotate(22deg);opacity:0}
+    .recipient{font-size:clamp(1.2rem,4vw,1.85rem);margin:28px 0 4px;color:#fff}
+    .recipient strong{color:var(--gold2);font-weight:600}
+    .open-btn,.response-btn,.copy-btn{border:1px solid var(--gold);color:#160d21;background:linear-gradient(135deg,#ffeaa2,#dca84d);padding:14px 26px;min-height:52px;cursor:pointer;letter-spacing:.08em;box-shadow:0 10px 35px rgba(0,0,0,.35);transition:transform .2s ease,filter .2s ease}
+    .open-btn:hover,.response-btn:hover,.copy-btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+    .open-btn:focus-visible,.response-btn:focus-visible,.copy-btn:focus-visible,.close-btn:focus-visible{outline:3px solid #c99cff;outline-offset:3px}
+
+    main{max-width:1120px;margin:auto;padding:50px 20px 100px}
+    .hero{display:grid;grid-template-columns:minmax(280px,470px) 1fr;gap:clamp(28px,6vw,76px);align-items:center;min-height:92svh}
+    .poster-frame{position:relative;padding:10px;background:linear-gradient(145deg,#f7d985,#7a4d21,#ffe89a);box-shadow:0 35px 90px #000}
+    .poster-frame::before{content:"";position:absolute;inset:17px;border:1px solid rgba(255,255,255,.4);pointer-events:none}
+    .poster-frame img{display:block;width:100%;height:auto;background:#130b23}
+    .intro{padding:38px 0}
+    .invited-for{color:var(--gold);letter-spacing:.16em;font-size:.9rem;margin:0}
+    h1{font-family:Didot,"Bodoni MT",Georgia,serif;font-weight:500;font-size:clamp(3rem,7.5vw,6.6rem);line-height:.86;letter-spacing:-.045em;margin:20px 0 24px;color:var(--gold2);text-shadow:0 4px 24px rgba(0,0,0,.8)}
+    h1 span{display:block;font-size:.34em;line-height:1.25;letter-spacing:.18em;color:#fff;margin-top:16px}
+    .lead{font-size:clamp(1.05rem,2vw,1.25rem);color:#f2e8f8;max-width:34em}
+    .host{margin-top:30px;color:var(--lav);letter-spacing:.08em}
+    .scroll-link{display:inline-flex;align-items:center;gap:10px;color:var(--gold);text-decoration:none;margin-top:20px;border-bottom:1px solid rgba(241,198,108,.4)}
+
+    .letter{position:relative;background:linear-gradient(155deg,rgba(25,13,40,.96),rgba(8,5,18,.98));border:1px solid rgba(241,198,108,.5);padding:clamp(28px,6vw,70px);box-shadow:0 30px 90px #000;margin:70px auto;max-width:900px}
+    .letter::before,.letter::after{content:"✦";position:absolute;color:var(--gold);font-size:1.2rem}
+    .letter::before{top:14px;left:18px}.letter::after{right:18px;bottom:14px}
+    .section-kicker{color:var(--pink);letter-spacing:.22em;font-size:.82rem;text-transform:uppercase;text-align:center;margin:0 0 8px}
+    h2{text-align:center;color:var(--gold2);font-weight:500;font-size:clamp(1.65rem,4vw,2.5rem);margin:0 0 34px;line-height:1.45}
+    .letter-copy{max-width:640px;margin:auto;font-size:1.05rem}
+    .letter-copy .recipient-line{text-align:center;color:var(--gold);font-size:1.2rem;margin-bottom:30px}
+    .signature{text-align:right;color:var(--lav);margin-top:34px}
+
+    .details{max-width:980px;margin:90px auto}
+    .detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .detail{background:rgba(14,8,28,.88);border:1px solid rgba(217,196,239,.2);padding:22px 24px;backdrop-filter:blur(10px)}
+    .detail dt{color:var(--gold);font-size:.84rem;letter-spacing:.14em;margin-bottom:5px}.detail dd{margin:0;color:#fff;font-size:1.03rem}
+    .wide{grid-column:1/-1}
+
+    .ways{max-width:980px;margin:100px auto}
+    .way-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .way{background:linear-gradient(160deg,rgba(38,19,57,.95),rgba(10,6,20,.95));border:1px solid rgba(241,198,108,.28);padding:28px 24px;min-height:230px}
+    .way-num{font-family:Georgia,serif;font-size:2.4rem;color:var(--gold);line-height:1}.way h3{font-size:1.12rem;color:#fff;margin:17px 0 8px}.way p{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--muted);font-size:.95rem;line-height:1.75;margin:0}
+
+    .reply{text-align:center;max-width:800px;margin:110px auto 0;padding:55px 24px;border-top:1px solid rgba(241,198,108,.4);border-bottom:1px solid rgba(241,198,108,.4)}
+    .reply p{color:var(--lav)}
+    .response-list{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .response-btn{background:transparent;color:var(--gold2);box-shadow:none;min-width:190px}
+    .response-btn.primary{background:linear-gradient(135deg,#ffeaa2,#dca84d);color:#160d21}
+    footer{text-align:center;color:#8e819d;padding:70px 20px;font-size:.85rem;letter-spacing:.12em}
+
+    dialog{width:min(620px,calc(100% - 32px));border:1px solid var(--gold);background:#10091e;color:#fff;padding:0;box-shadow:0 30px 100px #000}
+    dialog::backdrop{background:rgba(3,2,8,.82);backdrop-filter:blur(5px)}
+    .dialog-inner{padding:32px}.dialog-inner h2{text-align:left;margin-bottom:14px}.reply-text{white-space:pre-wrap;background:#080512;border:1px solid rgba(255,255,255,.14);padding:18px;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;font-size:.95rem;color:#efe7f7}
+    .dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.close-btn{border:0;background:transparent;color:#d6c9df;padding:12px 14px;cursor:pointer}.copy-btn{padding:11px 18px;min-height:46px}
+    .toast{min-height:1.4em;color:#d9ffcb;margin-top:10px;font-family:sans-serif;font-size:.9rem}
+
+    @media(max-width:760px){
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:40px}.poster-frame{width:min(440px,92vw);margin:auto}.intro{text-align:center;padding:8px 4px 40px}.lead{margin-inline:auto}.detail-grid,.way-grid{grid-template-columns:1fr}.wide{grid-column:auto}.letter{margin:45px 0}.ways,.details{margin:72px auto}.opening{padding-top:8vh}.response-btn{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.opening,.envelope::after,.seal{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div><div class="stars" aria-hidden="true"></div>
+
+  <section class="opening" id="opening" aria-labelledby="opening-title">
+    <div class="envelope-wrap" id="envelopeWrap">
+      <p class="eyebrow">A private invitation</p>
+      <div class="envelope" aria-hidden="true"><div class="seal">☾</div></div>
+      <p class="recipient" id="opening-title"><strong data-recipient>IKUSIA EVENT</strong> 様へ</p>
+      <button class="open-btn" id="openInvitation" type="button">招待状を開く</button>
+    </div>
+  </section>
+
+  <main id="invitation">
+    <section class="hero" aria-labelledby="party-title">
+      <div class="poster-frame"><img src="assets/halloween-poster.webp" alt="HALLOWE'EN Night Partyの告知ポスター"></div>
+      <div class="intro">
+        <p class="invited-for"><span data-recipient>IKUSIA EVENT</span> 様へのご招待</p>
+        <h1 id="party-title">HALLOWE'EN<span>NIGHT PARTY</span></h1>
+        <p class="lead">月が満ちる夜、IKUSIAファミリーが集う特別なハロウィンパーティーへご招待いたします。</p>
+        <p class="host">真央MEETING × 輝夜MEETING</p>
+        <a class="scroll-link" href="#letter">招待状を読む <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="letter" id="letter" aria-labelledby="letter-title">
+      <p class="section-kicker">Invitation</p>
+      <h2 id="letter-title">IKUSIAの仲間と過ごす、<br>一夜限りの月夜の祝宴</h2>
+      <div class="letter-copy">
+        <p class="recipient-line"><span data-recipient>IKUSIA EVENT</span> 様</p>
+        <p>真央MEETING×輝夜MEETINGでは、IKUSIAアバターと、IKUSIA系列イベントの皆さまが集まる「HALLOWE'EN NIGHT PARTY」を企画しています。</p>
+        <p>カフェ営業そのものではなく、カフェイベントのスタッフも参加する、交流と撮影を中心としたハロウィンパーティー形式の集会です。</p>
+        <p>ぜひコラボイベントとして、この特別な夜をご一緒いただけないでしょうか。参加方法や担当範囲は、イベント様の人数や活動スタイルに合わせてご相談いたします。</p>
+        <p class="signature">主催<br>真央MEETING × 輝夜MEETING</p>
+      </div>
+    </section>
+
+    <section class="details" aria-labelledby="details-title">
+      <p class="section-kicker">Event details</p><h2 id="details-title">開催概要</h2>
+      <dl class="detail-grid">
+        <div class="detail"><dt>開催日時</dt><dd>調整中</dd></div>
+        <div class="detail"><dt>開催形式</dt><dd>複数Instance制</dd></div>
+        <div class="detail"><dt>定員</dt><dd>各Instance 約26名</dd></div>
+        <div class="detail"><dt>スタッフ</dt><dd>各Instance 5名前後を想定</dd></div>
+        <div class="detail wide"><dt>参加対象アバター</dt><dd>りりか・輝夜・真央、または姉妹にあたるIKUSIAアバター</dd></div>
+        <div class="detail wide"><dt>ドレスコード</dt><dd>ハロウィン衣装・仮装改変推奨</dd></div>
+      </dl>
+    </section>
+
+    <section class="ways" aria-labelledby="ways-title">
+      <p class="section-kicker">Collaboration style</p><h2 id="ways-title">参加しやすい形を、一緒に</h2>
+      <div class="way-grid">
+        <article class="way"><div class="way-num">01</div><h3>担当Instanceで参加</h3><p>イベントの雰囲気を活かしながら、来場者のご案内や交流にご協力いただく形です。</p></article>
+        <article class="way"><div class="way-num">02</div><h3>合同スタッフとして参加</h3><p>少人数で合同Instanceへ加わり、撮影やパーティーを一緒に盛り上げていただく形です。</p></article>
+        <article class="way"><div class="way-num">03</div><h3>お名前掲載から参加</h3><p>当日のスタッフ参加が難しい場合も、掲載方法を含めて無理のない形をご相談します。</p></article>
+      </div>
+    </section>
+
+    <section class="reply" aria-labelledby="reply-title">
+      <p class="section-kicker">Répondez s'il vous plaît</p><h2 id="reply-title">この招待状へのお返事</h2>
+      <p>現在の時点で近いお気持ちを選んでください。主催へ送れる返信文を作成します。</p>
+      <div class="response-list">
+        <button class="response-btn primary" data-response="参加を希望します" type="button">参加を希望する</button>
+        <button class="response-btn" data-response="詳細を相談したいです" type="button">詳細を相談したい</button>
+        <button class="response-btn" data-response="今回は参加を見送ります" type="button">今回は見送る</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>HALLOWE'EN NIGHT PARTY · MAO MEETING × KAGUYA MEETING</footer>
+
+  <dialog id="replyDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-inner">
+      <h2 id="dialogTitle">返信文ができました</h2>
+      <p>コピーして、招待状を送ってくれた主催へDMでお送りください。</p>
+      <div class="reply-text" id="replyText"></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="dialog-actions"><button class="close-btn" id="closeDialog" type="button">閉じる</button><button class="copy-btn" id="copyReply" type="button">返信文をコピー</button></div>
+    </div>
+  </dialog>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const rawRecipient = (params.get('to') || 'IKUSIA EVENT').trim();
+    const recipient = rawRecipient.slice(0, 80) || 'IKUSIA EVENT';
+    document.querySelectorAll('[data-recipient]').forEach(el => el.textContent = recipient);
+
+    const opening = document.getElementById('opening');
+    const wrap = document.getElementById('envelopeWrap');
+    document.getElementById('openInvitation').addEventListener('click', () => {
+      wrap.classList.add('opening-now');
+      window.setTimeout(() => {
+        opening.classList.add('is-open');
+        document.getElementById('invitation').scrollIntoView({behavior:'smooth'});
+      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 720);
+    });
+
+    const dialog = document.getElementById('replyDialog');
+    const replyText = document.getElementById('replyText');
+    const toast = document.getElementById('toast');
+    document.querySelectorAll('[data-response]').forEach(btn => btn.addEventListener('click', () => {
+      replyText.textContent = `真央MEETING・輝夜MEETING主催者様\n\nご招待ありがとうございます。\n${recipient}は、HALLOWE'EN NIGHT PARTYについて「${btn.dataset.response}」。\n今後の詳細をご相談できましたら幸いです。\nよろしくお願いいたします。`;
+      toast.textContent = '';
+      dialog.showModal();
+    }));
+    document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+    document.getElementById('copyReply').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(replyText.textContent); toast.textContent = 'コピーしました。DMに貼り付けて送れます。'; }
+      catch { toast.textContent = 'コピーできませんでした。文章を選択してコピーしてください。'; }
+    });
+    dialog.addEventListener('click', e => { if(e.target === dialog) dialog.close(); });
+  </script>
+</body>
+</html>
