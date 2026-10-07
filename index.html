@@ -118,7 +118,7 @@
         <p class="recipient-line"><span data-recipient>IKUSIA EVENT</span> 様</p>
         <p>真央MEETING×輝夜MEETINGでは、IKUSIAアバターを使用して活動されているイベントの皆さまと一緒に楽しむ「HALLOWE'EN NIGHT PARTY」を開催いたします。</p>
         <p>交流と撮影を中心に、それぞれのイベントらしさを持ち寄って楽しむハロウィンパーティーです。</p>
-        <p>ぜひ<span data-recipient>IKUSIA EVENT</span>様にも、参加イベントとしてこの特別な夜をご一緒いただけましたら嬉しいです。当日はハロウィンに合う改変で、会場の雰囲気づくりにご協力をお願いいたします。</p>
+        <p>ぜひ<span data-recipient>IKUSIA EVENT</span>様にも、参加イベントとしてこの特別な夜をご一緒いただけましたら嬉しいです。ご参加にあたり、各イベントからスタッフ3名以上での参加をお願いいたします。当日はハロウィンに合う改変で、会場の雰囲気づくりにご協力ください。</p>
         <p class="signature">主催<br>真央MEETING × 輝夜MEETING</p>
       </div>
     </section>
@@ -131,6 +131,7 @@
         <div class="detail"><dt>開催形式</dt><dd>複数Instance制</dd></div>
         <div class="detail"><dt>定員</dt><dd>各Instance 約26名</dd></div>
         <div class="detail"><dt>参加対象アバター</dt><dd>IKUSIAアバター</dd></div>
+        <div class="detail"><dt>参加人数</dt><dd>各イベントからスタッフ3名以上</dd></div>
         <div class="detail"><dt>アバター容量</dt><dd>50MB以下</dd></div>
         <div class="detail"><dt>事前準備</dt><dd>ハロウィンに合う衣装・仮装改変</dd></div>
         <div class="detail wide"><dt>スタッフにお願いしたいこと</dt><dd>それぞれのイベントらしい装いと交流で、ハロウィンの雰囲気づくりにご協力ください。全体進行や運営上の判断は主催が担当します。</dd></div>
@@ -142,7 +143,7 @@
       <p class="section-kicker">Before the party</p><h2 id="ways-title">当日までにお願いしたいこと</h2>
       <div class="way-grid">
         <article class="way"><div class="way-num">01</div><h3>ハロウィン改変のご準備</h3><p>IKUSIAアバターに、ハロウィンに合う衣装や仮装改変をご用意ください。アバター容量は50MB以下でお願いいたします。</p></article>
-        <article class="way"><div class="way-num">02</div><h3>参加情報のご返信</h3><p>イベント名・代表者名・参加予定スタッフ人数を、招待状が届いたDMへお知らせください。</p></article>
+        <article class="way"><div class="way-num">02</div><h3>3名以上でのご参加</h3><p>各イベントからスタッフ3名以上での参加をお願いいたします。代表者名と参加予定人数を、招待状が届いたDMへお知らせください。</p></article>
         <article class="way"><div class="way-num">03</div><h3>掲載素材のご提供</h3><p>ポスター・ロゴ・背景画像などをご提供いただけましたら、会場ワールド内へ掲載いたします。</p></article>
       </div>
     </section>
@@ -199,7 +200,7 @@
     const toast = document.getElementById('toast');
     document.querySelectorAll('[data-response]').forEach(btn => btn.addEventListener('click', () => {
       const details = btn.dataset.response === '参加を希望します'
-        ? `\n\n【代表者名】\n【参加予定スタッフ人数】\n【掲載希望のポスター・画像】あり／なし\n【ご質問・相談事項】`
+        ? `\n\n【代表者名】\n【参加予定スタッフ人数（3名以上）】\n【掲載希望のポスター・画像】あり／なし\n【ご質問・相談事項】`
         : `\n\n【代表者名】\n【ご質問・相談事項】`;
       replyText.textContent = `真央MEETING・輝夜MEETING主催者様\n\nご招待ありがとうございます。\n${recipient}は、HALLOWE'EN NIGHT PARTYについて「${btn.dataset.response}」。${details}\n\nこの招待状が届いたDMより返信いたします。\nよろしくお願いいたします。`;
       toast.textContent = '';
